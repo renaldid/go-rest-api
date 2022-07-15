@@ -6,7 +6,7 @@ import (
 	"go_rest_api/exception"
 )
 
-func NewRouter(categoryController controller.CategoryController, customersController controller.CustomersController, ordersController controller.OrdersController, productsController controller.ProductsController) *httprouter.Router {
+func NewRouter(categoryController controller.CategoryController, customersController controller.CustomersController, ordersController controller.OrdersController, productsController controller.ProductsController, orderProductController controller.OrderProductsController) *httprouter.Router {
 	router := httprouter.New()
 
 	router.GET("/api/categories", categoryController.FindByAll)
@@ -32,6 +32,12 @@ func NewRouter(categoryController controller.CategoryController, customersContro
 	router.POST("/api/products/", productsController.Create)
 	router.PUT("/api/products/:productsId", productsController.Update)
 	router.DELETE("/api/products/:ordersId", productsController.Delete)
+
+	router.GET("/api/ordersproduct", orderProductController.FindByAll)
+	router.GET("/api/ordersproduct/:orderProductId", orderProductController.FindById)
+	router.POST("/api/ordersproduct/", orderProductController.Create)
+	router.PUT("/api/ordersproduct/:orderProductId", orderProductController.Update)
+	router.DELETE("/api/ordersproduct/:orderProductId", orderProductController.Delete)
 
 	router.PanicHandler = exception.ErrorHandler
 

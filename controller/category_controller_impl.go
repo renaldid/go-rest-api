@@ -14,6 +14,7 @@ type CategoryControllerImpl struct {
 	CategoryService service.CategoryService
 }
 
+//Membuat constructor yang bernama NewCategoryController dengan dependency categoryService
 func NewCategoryController(categoryService service.CategoryService) CategoryController {
 	return &CategoryControllerImpl{
 		CategoryService: categoryService,

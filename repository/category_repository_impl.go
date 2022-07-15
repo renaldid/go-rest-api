@@ -11,6 +11,7 @@ import (
 type CategoryRepositoryImpl struct {
 }
 
+//Membuat constructor yang bernama NewCategoryRepository tanpa dependency
 func NewCategoryRepository() CategoryRepository {
 	return &CategoryRepositoryImpl{}
 }
